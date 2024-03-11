@@ -1,0 +1,15 @@
+======================================
+23/02/2024 - Filipe Paiva *(Lachonete)
+======================================
+
+usuario interno
+
+faz----
+
+gestao de stock
+gestao venda (caixa)
+
+gestao de reservas, usuario externo
+
+...
+
