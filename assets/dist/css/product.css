@@ -148,7 +148,7 @@
 .bd-mode-toggle .dropdown-menu .active .bi {
   display: block !important;
 }
-#list-pvd-view, #list-estoque-view{
+#list-venda-view, #list-estoque-view{
   display: none;
 }
 @media (max-width: 500px){
@@ -158,18 +158,20 @@
   .col-auto{          
     width: 100%;
   }
-  #list-pvd-view, #list-estoque-view{
+  #list-venda-view, #list-estoque-view{
     display: block;
   }
   
   table{
     display: none;
   }
+
 }
 
 table td:hover{
   background: blue;
   cursor: pointer;
+  color: white;
 }
 
 #menuBTN a{
