@@ -3,7 +3,7 @@
 <head><script src="../assets/js/color-modes.js"></script>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Reserva - Lanchonete</title>
+	<title>Lanchonete</title>
 
 	<link rel = "shortcut icon" type = "imagem/x-icon" href="../assets/img/lata-2m.png">
     <link href="../assets/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -29,7 +29,7 @@
     </svg>
 
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
-      <button name="alterarTema" class="btn btn-primary py-2 dropdown-toggle d-flex align-items-center"
+      <button class="btn btn-primary py-2 dropdown-toggle d-flex align-items-center"
               id="bd-theme"
               type="button"
               aria-expanded="false"
@@ -40,14 +40,14 @@
       </button>
       <ul class="dropdown-menu dropdown-menu-end shadow" aria-labelledby="bd-theme-text">
         <li>
-          <button name="alterarTema" type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="light" aria-pressed="false">
             <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#sun-fill"></use></svg>
             Claro
             <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
           </button>
         </li>
         <li>
-          <button name="alterarTema" type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
+          <button type="button" class="dropdown-item d-flex align-items-center" data-bs-theme-value="dark" aria-pressed="false">
             <svg class="bi me-2 opacity-50" width="1em" height="1em"><use href="#moon-stars-fill"></use></svg>
             Escuro
             <svg class="bi ms-auto d-none" width="1em" height="1em"><use href="#check2"></use></svg>
@@ -76,10 +76,10 @@
 	      <svg class="bi" width="24" height="24"><use xlink:href="#Lanchonete"/></svg>
 	      Lanchonete
 	    </a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation" h="menuBTN" hidden>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation" h="menuBTN" >
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
-	    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel" h="canvasMenu">
+	    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel" h="canvasMenu" hidden>
 	      <div class="offcanvas-header">
 	        <h5 class="offcanvas-title" id="offcanvasLabel">Lanchonete</h5>
 	        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -91,11 +91,10 @@
 	              <svg class="bi" width="24" height="24"><use xlink:href="#Lanchonete"/></svg>
 	            </label>
 	          </li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link w-100" d="inicio" href="#inicio">Inicio</a></li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link" d="gestoque" href="#gestoque">Estoque</a></li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link " d="gvenda" href="#gvenda">Venda</a></li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link" d="grh" href="#grh">Recursos Humano</a></li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link" d="suporte" href="#suporte">Suporte</a></li>
+	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link w-100" d="inicio" href="#">Inicio</a></li>
+	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link" d="estoque" href="#">Estoque</a></li>
+	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link " d="venda" href="#">Venda</a></li>
+	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link" d="suporte" href="#">Suporte</a></li>
 	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link " d="sair" href="#sair">Sair</a></li>
 	        </ul>
 	      </div>
@@ -107,71 +106,108 @@
 	  <div id="login" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
 	    <div class="row">
 	      <div class="col-md-6 p-lg-5 mx-auto my-5"> 
-	        <h1 class="display-3 fw-bold text-uppercase">Reserva</h1>
-	        <h3 class="fw-normal text-muted mb-3">Sistema Lanchonete</h3>
+	        <h1 class="display-3 fw-bold text-uppercase">Posto de vendas</h1>
+	        <h3 class="fw-normal text-muted mb-3">Sistema L</h3>
 	      </div>
-	      <div name="btns_panel_credencial" class="col-md-6 p-lg-5 mx-auto my-5 " > 
-	      	<button class="btn border btn-primary text-small" name="panel_login">Inicial sessao</button>
-	      	<button class="btn border btn-primary text-small" name="panel_criar_conta">Criar conta</button>
+	      <div class="col-md-6 p-lg-5 mx-auto my-5" name="credencial"> 
+	        <h1 class="display-3 fw-bold text-uppercase">Iniciar sessao</h1>
+	        <div class="mt-5 border">
+	        	<h3 class="my-5">Credencial</h3>
+	        	<span name="msg-error-log" class="text-small text-danger" hidden>Credencial incorreta</span>
+		        <h3 class="fw-normal text-muted mb-3">
+		          <div name="form-login" method="post">
+		            <input type="text"  class="form-control border" name="nomeUsuario">
+		            <input type="password" class="form-control border my-1" name="senhaUsuario">
+		            <input type="submit" class="btn w-100 btn-primary border" name="subLog" value="Entrar">
+		          </div>
+		        </h3>
+	        </div>
 	      </div>
-	      <div name="panel_credencial" class="col-md-6">	      	
-		      <div id="panel_login" class="col-md-12 p-lg-5 mx-auto my-5" hidden> 
-		      	<div class="d-flex justify-content-end">
-		      		<button name="btn_cancelar_is" class="btn btn-danger border border-danger btn-close"></button>
-		      	</div>
-		        <h3 class=" fw-bold text-uppercase">Iniciar sessao</h3>
-		        <div class="row">
-		        	<div class="col-md-6 d-grid">
-		        		<label>Nome</label>
-		        		<input type="text"  name="nomeUsuario" class="fw-normal text-muted mb-3 w-100">
-		        	</div>
-		        	<div class="col-md-6 d-grid">
-		        		<label>Senha</label>
-		        		<input type="password" name="senhaUsuario" class="fw-normal text-muted mb-3 w-100">
-		        	</div>
+	    </div>
+	  </div>
 
-		        	<div class="col-md-6 d-grid">
-		        		<input type="submit" class="col-auto fw-normal text-muted mb-3 w-100 btn btn-primary text-white" value="Submeter">
-		        	</div>
-		        </div>
-		      </div>
-		      <div id="panel_criar_conta" class="col-md-12 p-lg-5 mx-auto my-5" hidden> 
-		      	<div class="d-flex justify-content-end">
-		      		<button name="btn_cancelar_is" class="btn btn-danger border border-danger btn-close"></button>
-		      	</div>
-		        <h3 class="fw-bold text-uppercase">Criar conta</h3>
-
-		        <div class="row">
-		        	<div class="col-md-6 d-grid">
-		        		<label>Nome</label>
-		        		<input type="text"  name="nome" class="fw-normal text-muted mb-3 w-100">
-		        	</div>
-		        	<div class="col-md-6 d-grid">
-		        		<label>Apelido</label>
-		        		<input type="text" name="senhaUsuario" class="fw-normal text-muted mb-3 w-100">
-		        	</div>
-		        	<div class="col-md-6 d-grid">
-		        		<label>Telefone</label>
-		        		<input type="text" name="senhaUsuario" class="fw-normal text-muted mb-3 w-100">
-		        	</div>
-		        	<div class="col-md-6 d-grid">
-		        		<label>Morada</label>
-		        		<input type="text" name="senhaUsuario" class="fw-normal text-muted mb-3 w-100">
-		        	</div>
-
-		        	<div class="col-md-6 d-grid">
-		        		<input type="submit" class="col-auto fw-normal text-muted mb-3 w-100 btn btn-primary" value="Submeter">
-		        	</div>
-		        </div>
-		      </div>		      
+	  <div id="inicio" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+	    <div class="row">
+	      <div class="col-md-6 p-lg-5 mx-auto my-5"> 
+	        <h1 class="display-3 fw-bold text-uppercase">Inicial</h1>
+	        <h3 class="fw-normal text-muted mb-3">Sistema Lanconete</h3>
 	      </div>
+	      
+	    </div>
+	  </div>
+
+	  <div id="venda" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+	    <div class="row">
+	      <div class="col-md-12 p-lg-5 mx-auto my-5"> 
+	        <h1 class="display-3 fw-bold text-uppercase">Posto de vendas</h1>
+	        <h3 class="fw-normal text-muted mb-3">
+		        <select class="form-select" id="list-venda-view">
+	            <option>Identifique</option>
+	          </select>
+	          <div class="d-grid">
+	          	<div>
+	          		<form id="formVendas">
+			            <div class="input-group mb-3">
+			            	<label class="input-group-text">Nome do produto</label>
+			            	<select class="form-select" name="nomeProduto">
+			            		<option value="">Especifique...</option>
+			            	</select>
+									</div>
+
+
+			            <div class="input-group mb-3">
+			            	<label class="input-group-text">Quantidade</label>
+									  <input type="text" class="form-control" aria-label="Text input with checkbox">
+									</div>
+			            <div class="input-group mb-3">
+			            	<label class="input-group-text">Valor a pagar</label>
+									  <input type="text" class="form-control" aria-label="Text input with checkbox">
+									</div>
+			            <div class="input-group mb-3">
+			            	<label class="input-group-text">Valor pago</label>
+									  <input type="text" class="form-control" aria-label="Text input with checkbox">
+									</div>
+									<input type="submit" class="btn btn-primary w-100" value="Registar">
+
+			            
+			        </form>
+	          	</div>
+            </div>
+	        </h3>
+	      </div>
+	      
+	    </div>
+	  </div>
+
+	  <div id="suporte" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+	    <div class="row">
+	      <div class="col-md-12 p-lg-5 mx-auto my-5"> 
+	        <h1 class="display-3 fw-bold text-uppercase">Suporte</h1>
+	        <h3 class="fw-normal text-muted mb-3">
+	        	<table>
+	        		<tr><th>Suporte</th></tr>
+	        		<tr></tr>
+	        	</table>
+	        </h3>
+	      </div>
+	      
+	    </div>
+	  </div>
+
+	  <div id="sair" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+	    <div class="row">
+	      <div class="col-md-6 p-lg-5 mx-auto my-5"> 
+	        <h1 class="display-3 fw-bold text-uppercase">Sair</h1>
+	        <button name="alterarTema" class=" btn btn-danger fw-normal text-muted mb-3 w-100" btn="sair">Terminar sessao</button>
+	      </div>
+	      
 	    </div>
 	  </div>
 	</main>
 	<script type="text/javascript">
 	</script>
-	
-	<script type="text/javascript" src="../assets/js/credencialReserva.js"></script>
+	<script type="text/javascript" src="../assets/js/credencial.js"></script>
+	<script type="text/javascript" src="../assets/js/main.js"></script>
 	<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
