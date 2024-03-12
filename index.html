@@ -76,7 +76,7 @@
 	      <svg class="bi" width="24" height="24"><use xlink:href="#Lanchonete"/></svg>
 	      Lanchonete
 	    </a>
-	    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation" h="menuBTN" hidden>
+	    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas" aria-controls="offcanvas" aria-label="Toggle navigation" h="menuBTN" >
 	      <span class="navbar-toggler-icon"></span>
 	    </button>
 	    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel" h="canvasMenu" hidden>
@@ -91,11 +91,10 @@
 	              <svg class="bi" width="24" height="24"><use xlink:href="#Lanchonete"/></svg>
 	            </label>
 	          </li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link w-100" d="inicio" href="#inicio">Inicio</a></li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link" d="gestoque" href="#gestoque">Estoque</a></li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link " d="gvenda" href="#gvenda">Venda</a></li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link" d="grh" href="#grh">Recursos Humano</a></li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link" d="suporte" href="#suporte">Suporte</a></li>
+	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link w-100" d="inicio" href="#">Inicio</a></li>
+	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link" d="estoque" href="#">Estoque</a></li>
+	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link " d="venda" href="#">Venda</a></li>
+	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link" d="suporte" href="#">Suporte</a></li>
 	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link " d="sair" href="#sair">Sair</a></li>
 	        </ul>
 	      </div>
@@ -126,6 +125,7 @@
 	      </div>
 	    </div>
 	  </div>
+
 	  <div id="inicio" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
 	    <div class="row">
 	      <div class="col-md-6 p-lg-5 mx-auto my-5"> 
@@ -135,10 +135,149 @@
 	      
 	    </div>
 	  </div>
+
+	  <div id="estoque" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+	    <div class="row">
+	      <div class="col-md-12 p-lg-5 mx-auto my-5"> 
+	        <h1 class="display-3 fw-bold text-uppercase">Estoque</h1>
+	        <h3 class="fw-normal text-muted mb-3">
+	        	<select class="form-select" id="list-estoque-view">
+            <option>Identifique</option>
+          </select>
+          <table class="table text-white" id="tabela-estoque">
+              <thead>
+                <tr>
+                  <th colspan="6">Produtos: <span name="quatidade-estoque"></span></th>
+                </tr>
+                <tr>
+                  <th>Nome produto</th>
+                  <th>Quantidade</th>
+                  <th>Preco de compra</th>
+                  <th>Preco de venda</th>
+                  <th>Data entrada</th>
+                </tr>
+                <form  id="add-estoque-form" class="g-3 needs-validation" novalidate>
+                  <tr>
+                    <th>
+                      <div class="input-group has-validation">
+                        <input type="text" class="form-control" name="nome-produto-estoque" required>
+                        
+                    </th>
+                    <th>
+                        <input type="number" class="form-control" name="qtdd-estoque" required>
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" name="preco-compra-estoque" required>
+                    </th>
+                    <th>
+                        <input type="text" class="form-control" name="preco-venda-estoque" required>
+                    </th>
+                    <th>
+                        <input type="date" class="form-control" name="date-in-estoque" required>
+                    </th>
+                    <th><button class="btn btn-primary w-100" type="submit" name="submitEstoque">Add</button></th>
+                  </tr>
+                </form>
+              </thead>
+            </table>
+
+	        </h3>
+	      </div>
+	      
+	    </div>
+	  </div>
+
+	  <div id="venda" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+	    <div class="row">
+	      <div class="col-md-12 p-lg-5 mx-auto my-5"> 
+	        <h1 class="display-3 fw-bold text-uppercase">Venda</h1>
+	        <h3 class="fw-normal text-muted mb-3">
+	        	<select class="form-select" id="list-venda-view">
+            <option>Identifique</option>
+          </select>
+          <table class="table text-white" id="tabela-venda">
+              <thead>
+                <tr>
+                  <th colspan="9" >
+                  	<div class="d-flex justify-content-between">
+                  		<label>Vendas: <span name="quantidade-venda"></span></label>
+                  		<label>Caixa: <span name="quantidade-caixa"></span></label>
+                  		<label class="d-flex ">
+                  		 <select class="form-select" id="selectMes">
+									        <option value="01">Janeiro</option>
+									        <option value="02">Fevereiro</option>
+									        <option value="03">Março</option>
+									        <option value="04">Abril</option>
+									        <option value="05">Maio</option>
+									        <option value="06">Junho</option>
+									        <option value="07">Julho</option>
+									        <option value="08">Agosto</option>
+									        <option value="09">Setembro</option>
+									        <option value="10">Outubro</option>
+									        <option value="11">Novembro</option>
+									        <option value="12">Dezembro</option>
+										    </select>
+	                  		<button class="btn btn-primary ">Vendedor</button>
+                  		</label>
+                  	</div>
+                  </th>
+                </tr>
+                <tr>
+                  <th>Nome do vendedor</th>
+                  <th>Numero da caixa</th>
+                  <th>Data venda</th>
+                  <th>Quantidade saida</th>
+                  <th>Total MZN entrada</th>
+                </tr>
+                
+              </thead>
+            </table>
+            <div class="row">
+            	<div class="col-md-4 d-flex justify-content-between">
+            		<span>Total de vendas</span>
+            		<span name="total-todas-vendas"></span>
+            	</div>
+            	<div class="col-md-4 d-flex justify-content-between">
+            		<span>Total de vendas</span>
+            		<span name="total-todas-vendas"></span>
+            	</div>
+            	
+            </div>
+	        </h3>
+	      </div>
+	      
+	    </div>
+	  </div>
+
+	  <div id="suporte" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+	    <div class="row">
+	      <div class="col-md-12 p-lg-5 mx-auto my-5"> 
+	        <h1 class="display-3 fw-bold text-uppercase">Suporte</h1>
+	        <h3 class="fw-normal text-muted mb-3">
+	        	<table>
+	        		<tr><th>Suporte</th></tr>
+	        		<tr></tr>
+	        	</table>
+	        </h3>
+	      </div>
+	      
+	    </div>
+	  </div>
+
+	  <div id="sair" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
+	    <div class="row">
+	      <div class="col-md-6 p-lg-5 mx-auto my-5"> 
+	        <h1 class="display-3 fw-bold text-uppercase">Sair</h1>
+	        <button name="alterarTema" class=" btn btn-danger fw-normal text-muted mb-3 w-100" btn="sair">Terminar sessao</button>
+	      </div>
+	      
+	    </div>
+	  </div>
 	</main>
 	<script type="text/javascript">
 	</script>
 	<script type="text/javascript" src="./assets/js/credencial.js"></script>
+	<script type="text/javascript" src="./assets/js/main.js"></script>
 	<script src="./assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
