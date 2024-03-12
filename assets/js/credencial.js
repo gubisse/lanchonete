@@ -7,21 +7,33 @@ let funcionario = [
 	];
 
 let usuario = [
-	{nome:'x',senha:"1234"},
-	{nome:'Bento',senha:'1234' },
-	{nome:'Ardile',senha:'1234' }
+	{nome:'x',senha:"1234", tipo:'pv'},
+	{nome:'Bento',senha:'1234', tipo:''},
+	{nome:'Ardile',senha:'1234', tipo:'' },
+	{nome:'Ardile',senha:'1234', tipo:'pv' }
 	];
 //Globalizar
 
 var permissao_logado = localStorage.getItem('permissao_logado');
 
+var urlAtual = window.location.href;
 login();
+
 function login(){
 	if(localStorage.getItem('nome_logado')!=='null'){
 		document.querySelector('div[h="canvasMenu"]').removeAttribute('hidden');
 		document.querySelector('span[name="msg-error-log"]').setAttribute('hidden','');
-		divsMain('inicio');
+		if(localStorage.getItem('tipo_usuario_logado')==='pv' && urlAtual.includes('pv.html')){
+			divsMain('venda');
+		}else if(!(localStorage.getItem('tipo_usuario_logado')==='pv') && urlAtual.includes('index.html')){
+			divsMain('inicio');
+		}else{			
+			document.querySelector('span[name="msg-error-log"]').removeAttribute('hidden');
+			document.querySelector('div[h="canvasMenu"]').setAttribute('hidden','');
+		}
 	}else{
+		document.querySelector('span[name="msg-error-log"]').removeAttribute('hidden');
+		document.querySelector('div[h="canvasMenu"]').setAttribute('hidden','');
 		divsMain('login');
 	}
 }
@@ -47,6 +59,7 @@ document.querySelector('input[name="subLog"]').addEventListener('click',sub=>{
 	usuario.forEach(u=>{
 		if(u.nome===nome & u.senha===senha){
 			localStorage.setItem('nome_logado',u.nome)
+			localStorage.setItem('tipo_usuario_logado',u.tipo)
 			login();
 		}else{
 			document.querySelector('span[name="msg-error-log"]').removeAttribute('hidden');
@@ -57,5 +70,7 @@ document.querySelector('input[name="subLog"]').addEventListener('click',sub=>{
 
 document.querySelector('button[btn="sair"]').addEventListener('click',event=>{
 	localStorage.setItem('nome_logado','null')
+	localStorage.setItem('tipo_usuario_logado','')
+	document.querySelector('span[name="msg-error-log"]').innerHTML="Sessao terminada"
 	login();
 })
