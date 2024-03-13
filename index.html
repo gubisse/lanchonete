@@ -192,10 +192,21 @@
 	      <div class="col-md-12 p-lg-5 mx-auto my-5"> 
 	        <h1 class="display-3 fw-bold text-uppercase">Venda</h1>
 	        <h3 class="fw-normal text-muted mb-3">
-	        	<select class="form-select" id="list-venda-view">
-            <option>Identifique</option>
-          </select>
-          <table class="table text-white" id="tabela-venda">
+	        	<div class="row" id="vendas-celular">	        		
+		        	<select class="col-4 form-select" id="list-ano-view-celular">
+		            <option value="">Ano</option>
+		          </select>   		
+		        	<select class="col-4 form-select" id="list-mes-view-celular">
+		            <option value="">Mes</option>
+		          </select>   		
+		        	<select class="col-4 form-select" id="list-data-view-celular">
+		            <option value="">Data</option>
+		          </select>
+		        	<select class="col-12 form-select" id="list-venda-view-celular">
+		            <option value="">Produto</option>
+		          </select>
+		        </div>
+	          <table class="table text-white" id="tabela-venda">
               <thead>
                 <tr>
                   <th colspan="9" >
@@ -223,23 +234,19 @@
                   </th>
                 </tr>
                 <tr>
-                  <th>Nome do vendedor</th>
-                  <th>Numero da caixa</th>
+                  <th>Vendedor</th>
+                  <th>Caixa</th>
                   <th>Data venda</th>
-                  <th>Quantidade saida</th>
-                  <th>Total MZN entrada</th>
+                  <th>Saida</th>
+                  <th>MZN</th>
                 </tr>
                 
               </thead>
             </table>
-            <div class="row">
-            	<div class="col-md-4 d-flex justify-content-between">
+            <div class="row" id="span-total-mzn-vendas">
+            	<div class="col-md-12 d-flex justify-content-between"  >
             		<span>Total de vendas</span>
-            		<span name="total-todas-vendas"></span>
-            	</div>
-            	<div class="col-md-4 d-flex justify-content-between">
-            		<span>Total de vendas</span>
-            		<span name="total-todas-vendas"></span>
+            		<span><span name="total-todas-vendas"></span><span> MZN</span></span>
             	</div>
             	
             </div>
