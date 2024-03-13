@@ -7,10 +7,10 @@ let funcionario = [
 	];
 
 let usuario = [
-	{nome:'VX1',senha:"1234", tipo:'pv'},
+	{nome:'XV1',senha:"1234", tipo:'pv'},
 	{nome:'X1',senha:'1234', tipo:''},
 	{nome:'X2',senha:'1234', tipo:'' },
-	{nome:'XV2',senha:'1234', tipo:'pv' }
+	{nome:'XV1',senha:'1234', tipo:'pv' }
 	];
 //Globalizar
 
