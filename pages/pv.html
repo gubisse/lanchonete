@@ -91,10 +91,7 @@
 	              <svg class="bi" width="24" height="24"><use xlink:href="#Lanchonete"/></svg>
 	            </label>
 	          </li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link w-100" d="inicio" href="#">Inicio</a></li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link" d="estoque" href="#">Estoque</a></li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link " d="venda" href="#">Venda</a></li>
-	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link" d="suporte" href="#">Suporte</a></li>
+	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link " d="venda" href="#">Caixa de vendas</a></li>
 	          <li class="nav-item w-100 border" data-bs-dismiss="offcanvas"><a class="nav-link " d="sair" href="#sair">Sair</a></li>
 	        </ul>
 	      </div>
@@ -137,46 +134,84 @@
 	  </div>
 
 	  <div id="venda" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
-	    <div class="row">
-	      <div class="col-md-12 p-lg-5 mx-auto my-5"> 
-	        <h1 class="display-3 fw-bold text-uppercase">Posto de vendas</h1>
-	        <h3 class="fw-normal text-muted mb-3">
-		        <select class="form-select" id="list-venda-view">
-	            <option>Identifique</option>
-	          </select>
-	          <div class="d-grid">
-	          	<div>
-	          		<form id="formVendas">
-			            <div class="input-group mb-3">
-			            	<label class="input-group-text">Nome do produto</label>
-			            	<select class="form-select" name="nomeProduto">
-			            		<option value="">Especifique...</option>
-			            	</select>
-									</div>
-
-
-			            <div class="input-group mb-3">
-			            	<label class="input-group-text">Quantidade</label>
-									  <input type="text" class="form-control" aria-label="Text input with checkbox">
-									</div>
-			            <div class="input-group mb-3">
-			            	<label class="input-group-text">Valor a pagar</label>
-									  <input type="text" class="form-control" aria-label="Text input with checkbox">
-									</div>
-			            <div class="input-group mb-3">
-			            	<label class="input-group-text">Valor pago</label>
-									  <input type="text" class="form-control" aria-label="Text input with checkbox">
-									</div>
-									<input type="submit" class="btn btn-primary w-100" value="Registar">
-
-			            
-			        </form>
-	          	</div>
+	  	<div class="row">      
+        <div class="col-md-3 " id="formCaixaVenda">
+            <div class="form-group">
+                <label >Produto:</label>
+                <div class="input-group">
+                   <input type="text" class="form-control" name="produtoPVD" required>
+                    <span class="input-group-text" name="btnCampoPesquisarProduto">Auto</span>
+                </div>
             </div>
-	        </h3>
-	      </div>
-	      
-	    </div>
+            <div class="form-group">
+                <label >Preco unitario:</label>
+                <input type="number" name="precoUnitarioPVD" readonly>
+            </div>
+            <div class="form-group">
+                <label >Quantidade:</label>
+                <input type="number" name="quantidadePVD" required>
+            </div>
+            <div class="form-group">
+                <button type="submit" style="display:none">Adicionar a lista de venda</button>
+                <span name="quantidadeNula" style="display:none">A quantidade ee maior que a quantidade no estoque do produto, ou nulo ou igual a zero</span>
+            </div>
+        </div>
+        <div class="col-md-3" id="panelListaProdutoPesquisado">                
+            <div id="panel-produtos-pesquisado-para-vender" >
+                <table id="lista" class="table">
+                    <thead>
+                        <tr>
+                            <th>Produto</th>
+                            <th>Preco</th>
+                            <th>Qtdd</th>
+                        </tr>
+                    </thead>
+                </table>                
+            </div>
+        </div>
+        <div class="col-md-6" id="panel-produtos-para-vender">
+        	<div class="row">        		
+	        	<button class="col-md-auto btn btn-danger" name="btnVoltarParaPesquisarProduto">Voltar</button>
+	          <table class="table w-100 col-md-auto" id="tabela-produtos-requisitados">
+	              <thead>                        
+	                  <tr>
+	                      <th>Produto</th>
+	                      <th>Preco unitario</th>
+	                      <th>Quantidade</th>
+	                      <th>Preco total</th>
+	                  </tr>
+	              </thead>
+	          </table>
+        	</div>
+        </div>
+        <div class="col-md-3 p-lg-5 mx-auto my-5" id="formPanelPagamento"> 
+	        <p class="fw-bold h2 border-bottom text-uppercase">Painel de pagamento</p>
+          <div class="form-group">
+              <label >Valor a pagar</label>
+              <div class="input-group">
+                 <input type="text" class="form-control" name="valorApagar" readonly>
+                  <span class="input-group-text" name="">MZN</span>
+              </div>
+          </div>
+          <div class="form-group">
+              <label >Valor pago:</label>
+              <div class="input-group">
+                <input type="number" class="form-control" name="valorPago" required>
+                <span class="input-group-text" name="">MZN</span>
+              </div>
+          </div>
+          <div class="form-group">
+              <label >Troco:</label>
+              <div class="input-group">
+                <input type="number " class="form-control" name="troco" readonly>
+                <span class="input-group-text" name="">MZN</span>
+              </div>
+          </div>
+          <div class="form-group">
+              <button type="submit" style="display:none;">Finalizar a venda</button>
+          </div>
+			  </div>
+      </div>        
 	  </div>
 
 	  <div id="suporte" class="position-relative overflow-hidden p-3 p-md-5 m-md-3 text-center bg-body-tertiary">
@@ -206,7 +241,9 @@
 	</main>
 	<script type="text/javascript">
 	</script>
+	<script type="text/javascript" src="../assets/js/variavel.js"></script>
 	<script type="text/javascript" src="../assets/js/credencial.js"></script>
+    <script type="text/javascript" src="../assets/js/controlarVenda.js"></script>
 	<script type="text/javascript" src="../assets/js/main.js"></script>
 	<script src="../assets/dist/js/bootstrap.bundle.min.js"></script>
 </body>
