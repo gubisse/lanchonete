@@ -1,95 +1,48 @@
-//=====================================================
-//INICIALIZACAO DE VARIAVEIS
-//=====================================================
-
-var estoque = [
-	{produto:'Vinagre', quantidade:50, precoCompra: 25, precoVenda:30, dataAt:'2024-01-20'},
-	{produto:'Banana', quantidade:90, precoCompra:2, precoVenda:4, dataAt:'2024-01-10'},
-	{produto:'Ananas', quantidade:100, precoCompra: 30, precoVenda:35, dataAt:'2024-01-20'},
-	{produto:'Goiaba', quantidade:120, precoCompra:5, precoVenda:10, dataAt:'2024-01-10'},
-	{produto:'Tomate', quantidade:800, precoCompra: 4, precoVenda:8, dataAt:'2024-01-20'},
-	{produto:'Laranja', quantidade:150, precoCompra:20, precoVenda:30, dataAt:'2024-01-10'},
-	{produto:'Abacaxi', quantidade:78, precoCompra: 50, precoVenda:60, dataAt:'2024-01-20'},
-	{produto:'Purficador', quantidade:900, precoCompra:200, precoVenda:210, dataAt:'2024-01-10'}
-	];
-
-
-var vendedor = [
-	{nome:'Manuel',Telefone:'845103692'},
-	{nome:'Manuel',Telefone:'845103692'}
-	];
-
-var caixas = [
-	{caixa:'001'},
-	{caixa:'002'},
-	{caixa:'003'},
-	{caixa:'004'}
-	];
-
-var vendas = [
-	{caixa:'001', vendedor:'Lorgat', produto:'Ananas', vendidas:2, mznPagar:0, manPago:0, dataVenda:'2022-02-22'},
-	{caixa:'001', vendedor:'Fungai', produto:'Abacaxi', vendidas:2, mznPagar:0, manPago:0, dataVenda:'2022-03-10'},
-	{caixa:'001', vendedor:'Manuel', produto:'Banana', vendidas:2, mznPagar:0, manPago:0, dataVenda:'2023-01-11'},
-	{caixa:'003', vendedor:'Venancio', produto:'Goiaba', vendidas:2, mznPagar:0, manPago:0, dataVenda:'2024-04-10'},
-	{caixa:'002', vendedor:'Albertinho', produto:'Tomate', vendidas:2, mznPagar:0, manPago:0, dataVenda:'2020-07-10'},
-	{caixa:'004', vendedor:'Bernardo', produto:'Banana', vendidas:2, mznPagar:0, manPago:0, dataVenda:'2021-02-10'},
-	{caixa:'002', vendedor:'Chanaka', produto:'Laranja', vendidas:2, mznPagar:0, manPago:0, dataVenda:'2022-06-15'},
-	{caixa:'002', vendedor:'John', produto:'Laranja', vendidas:3, mznPagar:0, manPago:0, dataVenda:'2023-04-10'},
-	{caixa:'002', vendedor:'Joana', produto:'Laranja', vendidas:2, mznPagar:0, manPago:0, dataVenda:'2023-03-19'},
-	{caixa:'002', vendedor:'Joao', produto:'Laranja', vendidas:5, mznPagar:0, manPago:0, dataVenda:'2023-03-19'}
-
-	];
 
 
 //=====================================================
 //ESTOQUE
 //=====================================================
+const forms = document.querySelectorAll('.needs-validation')
 
-document.querySelectorAll('table button').forEach(elemento=>{
-	elemento.addEventListener('click',event=>{
-		if(elemento.name==='submitEstoque'){
-			validarFormulario();
-		}
-	})
-})
+// Loop over them and prevent submission
+Array.from(forms).forEach(form => {
+	form.addEventListener('submit', event => {
+		if (!form.checkValidity()) {
+			event.preventDefault()
+			event.stopPropagation()
+			alert(form.id+" Nao esta prechido conforme")
 
-
-
-
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-function validarFormulario(){
-	// Fetch all the forms we want to apply custom Bootstrap validation styles to
-	const forms = document.querySelectorAll('.needs-validation')
-
-	// Loop over them and prevent submission
-	Array.from(forms).forEach(form => {
-		form.addEventListener('submit', event => {
-			if (!form.checkValidity()) {
-				event.preventDefault()
-				event.stopPropagation()
-				alert(form.id+" Nao esta prechido conforme")
-
-			}else{
-				event.preventDefault();
-				console.log(form.id)
-				if(form.id=="add-estoque-form"){
-					var estoque = {
-						produto: document.querySelector('input[name="nome-produto-estoque"]').value,
-						quantidade: document.querySelector('input[name="qtdd-estoque"]').value,
-						precoCompra: document.querySelector('input[name="preco-compra-estoque"]').value,
-						precoVenda: document.querySelector('input[name="preco-venda-estoque"]').value,
-						dataAt: document.querySelector('input[name="date-in-estoque"]').value
-					}
-					addEstoque(estoque);
+		}else{
+			event.preventDefault();
+			console.log(form.id)
+			if(form.id=="add-estoque-form"){
+				var estoque = {
+					produto: document.querySelector('input[name="nome-produto-estoque"]').value,
+					quantidade: document.querySelector('input[name="qtdd-estoque"]').value,
+					precoCompra: document.querySelector('input[name="preco-compra-estoque"]').value,
+					precoVenda: document.querySelector('input[name="preco-venda-estoque"]').value,
+					dataAt: document.querySelector('input[name="date-in-estoque"]').value
 				}
+				addEstoque(estoque);
 			}
-		});
+		}
 	});
-}
+});
 
 
+///MODO TELA llx
+
+exibirNaTabela('venda','ano','');
+
+document.getElementById('selectAno').addEventListener('input',event=>{
+	exibirNaTabela('venda','ano',event.target.value);
+})
 document.getElementById('selectMes').addEventListener('input',event=>{
-	exibirNaTabela('venda');
+	exibirNaTabela('venda','mes',event.target.value);
+})
+document.getElementById('selectData').addEventListener('input',event=>{
+	exibirNaTabela('venda','data',event.target.value);
 })
 
 function controlVendas(){
@@ -111,16 +64,13 @@ function getMonthName(month) {
     const months = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
     return months[month - 1];
 }
-
-
-function exibirNaTabela(argument){
+function exibirNaTabela(argument,tipoSelect,valorSelect){
 	console.log(argument)
+	controlVendas()
 
 
 	var tabela = document.getElementById('tabela-estoque');
 	if(argument==='venda'){
-
-	controlVendas();
 
 		var totalVendas=0;
 
@@ -129,13 +79,20 @@ function exibirNaTabela(argument){
 			tabela.deleteRow(2);
 		}
 
-		var selectMes = document.getElementById('selectMes');		
-        var mesSelecionado = selectMes.value;
-
 		// Filtra as vendas que correspondem à data desejada
 		var vendasFiltradas = vendas.filter(function(venda) {
-		    return venda.dataVenda.startsWith('2024-' + mesSelecionado);
+			if(tipoSelect==='ano'){
+				return venda.dataVenda.startsWith(valorSelect);
+			}else if(tipoSelect==='mes'){
+				return venda.dataVenda.startsWith(document.getElementById('selectAno').value+'-' + valorSelect);
+			}else if(tipoSelect==='data'){
+				return venda.dataVenda.startsWith(document.getElementById('selectAno').value+'-'+document.getElementById('selectMes').value+'-'+valorSelect);
+			}else{
+				return venda.dataVenda.startsWith(valorSelect);				
+			}
 		});
+
+
 
 		// Variável para armazenar o total de vendas
 		var totalVendas = 0;
@@ -285,6 +242,8 @@ function exibirNaTabela(argument){
 
 
 
+		controlVendas();
+
 
 	}else if(argument=='estoque'){
 		document.querySelector('span[name="quatidade-estoque"]').innerHTML=estoque.length;
@@ -344,8 +303,96 @@ function exibirNaTabela(argument){
 
 
 
+	}else if(argument==='produto-requisitados'){
+		let tabela = document.getElementById('tabela-produtos-requisitados');
+
+		// Remove todas as linhas existentes da tabela
+		while (tabela.rows.length > 1) {
+			tabela.deleteRow(1);
+		}
+
+
+
+		var totalVendas=0;
+
+		// Itera sobre a lista de valors
+		listaProdutosRequisitados.forEach(function(valor) {
+			// Cria uma nova linha na tabela
+			var row = tabela.insertRow();
+			
+
+			// Insere as células para cada atributo da valor
+			row.insertCell(0).innerHTML = valor.produto;
+			row.insertCell(1).innerHTML = valor.precoUnitario;
+			row.insertCell(2).innerHTML = valor.quantidade;
+			row.insertCell(3).innerHTML = valor.precoTotal;
+			var btnFinalizar = row.insertCell(4);
+			btnFinalizar.classList.add('btn','bg-primary')
+			btnFinalizar.innerHTML = 'Opcion';
+
+			btnFinalizar.addEventListener('click',event=>{
+				var valorCelula = event.target.parentNode.cells[0].innerHTML;
+			})
+
+			totalVendas += valor.precoTotal;
+		});
+
+		// Exibe o total de vendas na tabela
+		var rowTotal = tabela.insertRow();
+		rowTotal.insertCell(0).innerHTML = 'Total';
+		rowTotal.insertCell(1).innerHTML = '';
+		rowTotal.insertCell(2).innerHTML = '';
+		rowTotal.insertCell(3).innerHTML = totalVendas + " MZN";
+
+		var btnComprar = document.createElement('button');
+		btnComprar.classList.add('btn', 'bg-success','w-100','my-2')
+		btnComprar.innerHTML = 'Depurar para o pagamento';
+
+
+		btnComprar.addEventListener('click',event=>{
+			listaProdutosRequisitados.forEach(valor=>{
+				console.log(valor.produto);
+				document.getElementById('panelListaProdutoPesquisado').style.display="none"
+				document.getElementById('formCaixaVenda').style.display="none"
+				document.getElementById('panel-produtos-para-vender').style.display="block"
+				document.getElementById('formPanelPagamento').style.display="block"
+				document.querySelectorAll('#panel-produtos-para-vender button').forEach(valor=>{
+					valor.style.display="none";
+					if(valor.name==='btnVoltarParaPesquisarProduto'){
+						document.querySelector('button[name="btnVoltarParaPesquisarProduto"]').style.display="block"
+					}
+				})
+				//campo do pagamento
+				var valorApagar = document.querySelector('#formPanelPagamento input[name="valorApagar"]').value=totalVendas;
+				var valorPago = document.querySelector('#formPanelPagamento input[name="valorPago"]');
+				valorPago.addEventListener('input',event=>{
+
+					document.querySelector('#formPanelPagamento input[name="troco"]').value=parseInt(event.target.value)-parseInt(valorApagar);
+					
+				    if (document.querySelector('#formPanelPagamento input[name="troco"]').value.indexOf('-')) {
+				        document.querySelector('#formPanelPagamento button[type="submit"]').style.display = "block";
+				    } else {
+				        document.querySelector('#formPanelPagamento button[type="submit"]').style.display = "none";
+				    }
+				})
+
+			});
+		});
+
+		document.querySelector('#formCaixaVenda button[type="submit"]').style.display="none"
+
+
+		var rowBtn = tabela.insertRow();
+
+		rowBtn.appendChild(btnComprar);
+
+
+
+
+
 	}
 }
+
 
 function atualizarSelectProduto(argument,ano,mes,data) {
 
@@ -417,7 +464,7 @@ function atualizarSelectProduto(argument,ano,mes,data) {
 
 function addEstoque(argument) {
 	estoque.push(argument)
-	exibirNaTabela('estoque')
+	exibirNaTabela('estoque','')
 }
 
 //=====================================================
