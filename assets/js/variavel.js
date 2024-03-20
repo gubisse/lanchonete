@@ -1,7 +1,16 @@
 //=====================================================
-//INICIALIZACAO DE VARIAVEIS
+//PRIMEIRO A SER CHAMADO NA SEGUENCIA
 //=====================================================
+var caminho = window.location.pathname;
 
+
+var nomeis = "";
+var senhais = "";
+var tipois = "";
+var btnSubmitIS = "";
+
+//Conta de vezes para fazer a operacao devido o loop que ocore exige a manipulcao
+var conta = 1;
 
 var funcionario = [
 	{nome:'Manuel'},
@@ -10,16 +19,10 @@ var funcionario = [
 	];
 
 var usuario = [
-	{nome:'XV1',senha:"1234", tipo:'pv', caixa: '001'},
-	{nome:'X1',senha:'1234', tipo:'', caixa: '000'},
-	{nome:'X2',senha:'1234', tipo:'',  caixa: '000'},
-	{nome:'XV2',senha:'1234', tipo:'pv',  caixa: '002'}
-	];
-
-var clientes = [
-	{nome:'C1', apelido:"Mtm1", telefone:'898745621', morada: 'Bairro B', senha: 'C1'},
-	{nome:'C2', apelido:"Mtm2", telefone:'898745623', morada: 'Bairro C', senha: 'C2'},
-	{nome:'C3', apelido:"Mtm3", telefone:'898745625', morada: 'Bairro E', senha: 'C3'}
+	{nome:'V1', apelido:"Vendedor 1", morada: 'Bairro H', telefone:'898745621', senha:"1234", tipo:'pv', caixa: '001'},
+	{nome:'v2', apelido:"Vendedor 2", morada: 'Bairro B', telefone:'8987456991', senha:'1234', tipo:'pv', caixa: '003'},
+	{nome:'X', apelido:"Admin", morada: 'Bairro F', telefone:'898745690', senha:'1234', tipo:'index',  caixa: 'all'},
+	{nome:'R', apelido:"Reserva", morada: 'Bairro F', telefone:'898745600', senha:'1234', tipo:'reserva',  caixa: 'null'}
 	];
 
 var estoque = [
